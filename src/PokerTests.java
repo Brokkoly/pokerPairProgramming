@@ -15,12 +15,32 @@ public class PokerTests {
 	@After
 	public void tearDown() throws Exception
 	{
+		
 	}
-
 	@Test
-	public void test()
-	{
-		fail("Not yet implemented");
+	public void testDeckConstructor(){
+		
+	}
+	public void testCardConstructor() throws CardException{
+		Card c = new Card(4,Card.HEART);
+		assertEquals(4,c.getCardNum());
+		assertEquals(Card.HEART, c.getSuit());
+		
+		try{
+			c.setCardNum(1);
+			fail();
+		}
+		catch(BadCardNumException e){
+			
+		}
+		try{
+			c.setSuit(27);
+			fail();
+		}
+		catch(BadSuitException e){
+			
+		}
+		
 	}
 
 }
