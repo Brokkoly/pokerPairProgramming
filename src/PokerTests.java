@@ -13,15 +13,33 @@ public class PokerTests {
 	}
 
 	@After
-	public void tearDown() throws Exception
-	{
+	public void tearDown() throws Exception{
+		Hand h = new Hand();
+		h.add(new Card(Card.A,Card.CLUB));
+		h.add(new Card(Card.A,Card.DIAMOND));
+		assertTrue(h.isOnePair());
 
+	}
+	@Test
+	public void onePairTest() throws Exception{
+		
+	}
+	@Test
+	public void customHandConstructor() throws Exception{
+		Hand h = new Hand();
+		h.add(new Card(Card.A,Card.CLUB));
+		h.add(new Card(Card.A,Card.DIAMOND));
+		assertEquals(2,h.getNumType(Card.A));
+		assertEquals(1,h.getNumSuit(Card.CLUB));
+		assertEquals(1,h.getNumSuit(Card.CLUB));
 	}
 	@Test
 	public void testHandConstructor() throws Exception
 	{
 		Deck d = new Deck();
 		Hand h = new Hand(d,5);
+		assertEquals(h.size(),5);
+		assertEquals(d.size(),47);
 	}
 	@Test
 	public void testDeckConstructor() throws Exception{

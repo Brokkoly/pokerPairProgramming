@@ -40,4 +40,7 @@ public class Deck{
 	public void shuffle(){
 		Collections.shuffle(cardArray);//EZPZ
 	}
+	public int size(){
+		return cardArray.size();
+	}
 }
