@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,11 +20,47 @@ public class PokerTests {
 		h.add(new Card(Card.A,Card.CLUB));
 		h.add(new Card(Card.A,Card.DIAMOND));
 		assertTrue(h.isOnePair());
-
 	}
 	@Test
-	public void onePairTest() throws Exception{
-		
+	public void shuffleTest() throws Exception{
+		System.out.println("SHUFFLE TEST BEGIN");
+		Deck d = new Deck();
+		d.shuffle();
+		//d.print();
+		System.out.println("SHUFFLE TEST END");
+	}
+	@Test
+	public void handSortCheckTest() throws Exception{
+		System.out.println("HAND SORT TEST BEGIN");
+		Deck d = new Deck();
+		d.shuffle();
+		Hand h = new Hand(d,5);
+		//h.sortCheck();
+		System.out.println("HAND SORT TEST END");
+	}
+	@Test
+	public void percentageCheckTest5() throws Exception{
+		Deck d;
+		Hand h;
+		int hNum;
+		ArrayList<Integer> handTypeNumbers = new ArrayList<Integer>();
+		for(int i = 0; i < 10;i++){
+			handTypeNumbers.add(new Integer(0));
+		}
+		for(int i = 0; i < 1000;i++){
+			d = new Deck();
+			d.shuffle();
+			h = new Hand(d,5);
+			hNum = h.getHandType();
+			Integer I = handTypeNumbers.get(hNum);
+			I += 1;
+			handTypeNumbers.set(hNum,I);
+		}
+		System.out.println("NUMBERS OF EACH HAND TYPE");
+		for(Integer x : handTypeNumbers){
+			System.out.println(x);
+		}
+		System.out.println("END NUMBER OF EACH HAND TYPE");
 	}
 	@Test
 	public void customHandConstructor() throws Exception{

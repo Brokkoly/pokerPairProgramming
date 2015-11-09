@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class Card {
+public class Card implements Comparable<Card> {
 	public static int CLUB = 0;
 	public static int DIAMOND = 1;
 	public static int HEART = 2;
@@ -61,6 +61,22 @@ public class Card {
 		s.append(" of ");
 		s.append(suitStrings.get(suit));
 		return s.toString();
+	}
+
+	@Override
+	public int compareTo(Card arg0)
+	{
+		return(cardNum < arg0.getCardNum() ? -1:(equals(arg0) ? 0:1));
+	}
+	@Override
+	public boolean equals(Object o){
+		if(!(o instanceof Card))
+			return false;
+		Card c = (Card)o;
+		if((cardNum == c.getCardNum())&&(suit == c.getSuit())){
+			return true;
+		}
+		return false;
 	}
 }
 

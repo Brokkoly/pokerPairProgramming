@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 
 public class Deck{
@@ -38,9 +39,16 @@ public class Deck{
 		}
 	}
 	public void shuffle(){
-		Collections.shuffle(cardArray);//EZPZ
+		
+		Collections.shuffle(cardArray, new Random(System.currentTimeMillis()));//EZPZ
 	}
 	public int size(){
 		return cardArray.size();
+	}
+	public void print()
+	{
+		for(Card x:cardArray){
+			System.out.println(x.toString());
+		}
 	}
 }
